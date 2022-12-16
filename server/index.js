@@ -1,14 +1,20 @@
+// Impoting the .env file
 require("dotenv").config()
 
+// express allow us to create our REST API'S
 const express = require("express")
+
+// mongoose allow us a easy connection with MongoDB database
 const mongoose = require('mongoose')
 
 const PORT = process.env.PORT | 3001
 
+// Creating a REST API to communicate with MongoDB and store the data
 const app = express()
 
-// Lets connect the the app to mongodb
 
+
+// Lets connect the the app to mongodb
 mongoose.connect(process.env.DB_URI).then(() => {
     console.log("Connection successful")
 }).catch((err) => {
@@ -20,4 +26,3 @@ app.listen(PORT, "0.0.0.0", () => {
     console.log(`Connected at port ${PORT}`)
 }) 
 
-// Lets connect the the app to mongodb
