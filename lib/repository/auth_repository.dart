@@ -1,3 +1,4 @@
+import 'package:docs_clone_flutter/models/user_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,9 +16,13 @@ class AuthRepository {
     try {
       final user = await _googleSignIn.signIn();
       if (user != null) {
-        print(user.email);
-        print(user.displayName);
-        print(user.photoUrl);
+        final userAcc = UserModel(
+          email: user.email,
+          name: user.displayName!,
+          profilePic: user.photoUrl!,
+          uid: '',
+          token: '',
+        );
       }
     } catch (e) {
       print(e);
