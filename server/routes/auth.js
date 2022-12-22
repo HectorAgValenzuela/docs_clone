@@ -32,7 +32,7 @@ authRouter.post('/api/signup', async (req, res) => {
 
 
     } catch (e) {
-        console.log(e)
+        res.status(500).json({error: e.message})
     }
 })
 
