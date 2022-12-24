@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_sign_in: ^5.4.2
   flutter_riverpod: ^2.1.1
+  http: ^0.13.5
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +67,7 @@ flutter:
   assets:
     - assets/images/docs-logo.png
     - assets/images/g-logo-2.png
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
