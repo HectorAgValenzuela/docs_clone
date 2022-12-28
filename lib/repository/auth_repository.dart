@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:docs_clone_flutter/constants.dart';
 import 'package:docs_clone_flutter/models/error_model.dart';
 import 'package:docs_clone_flutter/models/user_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -26,7 +27,7 @@ class AuthRepository {
 
   Future<ErrorModel> signInWithGoogle() async {
     ErrorModel error = ErrorModel(
-      error: 'Some unexpected errir occurred',
+      error: 'Some unexpected error occurred',
       data: null,
     );
     try {
@@ -40,7 +41,7 @@ class AuthRepository {
           token: '',
         );
 
-        var res = await _client.post(Uri.parse(dotenv.get('IP', fallback: "")),
+        var res = await _client.post(Uri.parse('$host/api/signup'),
             body: userAcc.toJson(),
             headers: {
               'Content-Type': 'application/json; charset=UTF-8',
