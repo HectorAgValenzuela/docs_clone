@@ -7,12 +7,17 @@ const express = require("express")
 // mongoose allow us a easy connection with MongoDB database
 const mongoose = require('mongoose')
 
+// This is a multiplataform app, so we need a Cross-Origin Resource Sharing
+const cors = require("cors")
+
 const authRouter = require("./routes/auth")
 
 const PORT = process.env.PORT | 3001
 
 // Creating a REST API to communicate with MongoDB and store the data
 const app = express()
+
+app.use(cors())
 
 // Middleware that is converting the info that comes from the cliente to a json
 app.use(express.json())

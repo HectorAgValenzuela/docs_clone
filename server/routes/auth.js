@@ -10,6 +10,7 @@ const User = require("../models/user");
 const authRouter = express.Router();
 
 authRouter.post('/api/signup', async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     try {
         const {name, email, profilePic} = req.body // the body parameter allow us to access the data of req
         // also its the .headers parameter, its usually for the auth token
