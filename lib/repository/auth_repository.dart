@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:docs_clone_flutter/constants.dart';
 import 'package:docs_clone_flutter/models/error_model.dart';
 import 'package:docs_clone_flutter/models/user_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -40,6 +39,8 @@ class AuthRepository {
           uid: '',
           token: '',
         );
+
+        final host = dotenv.get('IP', fallback: "");
 
         var res = await _client.post(Uri.parse('$host/api/signup'),
             body: userAcc.toJson(),
