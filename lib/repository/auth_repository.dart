@@ -81,7 +81,7 @@ class AuthRepository {
         final host = dotenv.get('IP', fallback: "");
         var res = await _client.get(Uri.parse('$host/'), headers: {
           'Content-Type': 'application/json; charset=UTF-8',
-          'x_auth-token': token,
+          'x-auth-token': token,
         });
 
         switch (res.statusCode) {
@@ -98,7 +98,6 @@ class AuthRepository {
             break;
         }
       }
-
     } catch (e) {
       error = ErrorModel(error: e.toString(), data: null);
     }
