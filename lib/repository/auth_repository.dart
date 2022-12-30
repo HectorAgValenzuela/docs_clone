@@ -42,7 +42,7 @@ class AuthRepository {
         final userAcc = UserModel(
           email: user.email,
           name: user.displayName!,
-          profilePic: user.photoUrl!,
+          profilePic: user.photoUrl ?? '',
           uid: '',
           token: '',
         );
