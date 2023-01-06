@@ -29,6 +29,7 @@ class HomeScreen extends ConsumerWidget {
             onPressed: () => signOut(ref),
             icon: const Icon(
               Icons.logout,
+              color: kRedColor,
             ),
           ),
         ],
