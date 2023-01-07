@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:docs_clone_flutter/models/document_model.dart';
 import 'package:docs_clone_flutter/models/error_model.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
+
+import '../constants.dart';
 
 class DocumentRepository {
   final Client _client;
@@ -17,7 +18,6 @@ class DocumentRepository {
       data: null,
     );
     try {
-      final host = dotenv.get('IP', fallback: "");
       var res = await _client.post(Uri.parse('$host/doc/create'),
           body: jsonEncode({
             'createdAt': DateTime.now().millisecondsSinceEpoch,

@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'package:docs_clone_flutter/models/error_model.dart';
 import 'package:docs_clone_flutter/models/user_model.dart';
 import 'package:docs_clone_flutter/repository/local_storage_repository.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart';
+
+import '../constants.dart';
 
 final authRepositoryProvider = Provider((ref) => AuthRepository(
       googleSignIn: GoogleSignIn(),
@@ -47,7 +48,6 @@ class AuthRepository {
           token: '',
         );
 
-        final host = dotenv.get('IP', fallback: "");
 
         var res = await _client.post(Uri.parse('$host/api/signup'),
             body: userAcc.toJson(),
@@ -78,7 +78,6 @@ class AuthRepository {
     try {
       String? token = await _localStorageRepository.getToken();
       if (token != null) {
-        final host = dotenv.get('IP', fallback: "");
         var res = await _client.get(Uri.parse('$host/'), headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': token,
