@@ -6,7 +6,6 @@ class DocumentModel {
   final List content;
   final DateTime createdAt;
   final String id;
-
   DocumentModel({
     required this.title,
     required this.uid,
@@ -16,13 +15,15 @@ class DocumentModel {
   });
 
   Map<String, dynamic> toMap() {
-    return {
-      'title': title,
-      'uid': uid,
-      'content': content,
-      'createdAt': createdAt.millisecondsSinceEpoch,
-      'id': id,
-    };
+    final result = <String, dynamic>{};
+  
+    result.addAll({'title': title});
+    result.addAll({'uid': uid});
+    result.addAll({'content': content});
+    result.addAll({'createdAt': createdAt.millisecondsSinceEpoch});
+    result.addAll({'id': id});
+  
+    return result;
   }
 
   factory DocumentModel.fromMap(Map<String, dynamic> map) {
@@ -38,6 +39,5 @@ class DocumentModel {
   String toJson() => json.encode(toMap());
 
   factory DocumentModel.fromJson(String source) => DocumentModel.fromMap(json.decode(source));
-
 }
 
