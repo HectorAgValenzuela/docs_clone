@@ -2,9 +2,16 @@ import 'dart:convert';
 
 import 'package:docs_clone_flutter/models/document_model.dart';
 import 'package:docs_clone_flutter/models/error_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart';
 
 import '../constants.dart';
+
+final documentRepositoryProvider = Provider(
+  ((ref) => DocumentRepository(
+        client: Client(),
+      )),
+);
 
 class DocumentRepository {
   final Client _client;
