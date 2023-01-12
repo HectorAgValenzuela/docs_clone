@@ -32,6 +32,10 @@ class HomeScreen extends ConsumerWidget {
     }
   }
 
+  void navigateToDocument(BuildContext context, String documentId) {
+    Routemaster.of(context).push('/document/$documentId');
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -72,9 +76,7 @@ class HomeScreen extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   DocumentModel document = snapshot.data!.data[index];
                   return InkWell(
-                    onTap:() {
-                      
-                    },
+                    onTap: () => navigateToDocument(context, document.id),
                     child: SizedBox(
                       height: 50,
                       child: Card(
