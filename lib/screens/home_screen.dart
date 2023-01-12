@@ -1,6 +1,9 @@
 import 'dart:js';
 
 import 'package:docs_clone_flutter/colors.dart';
+import 'package:docs_clone_flutter/common/widgets/loader.dart';
+import 'package:docs_clone_flutter/models/document_model.dart';
+import 'package:docs_clone_flutter/models/error_model.dart';
 import 'package:docs_clone_flutter/repository/auth_repository.dart';
 import 'package:docs_clone_flutter/repository/document_repository.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +55,43 @@ class HomeScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text(ref.watch(userProvider)!.email),
+      body: FutureBuilder<ErrorModel?>(
+        future: ref
+            .watch(documentRepositoryProvider)
+            .getDocuments(ref.watch(userProvider)!.token),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Loader();
+          }
+          return Center(
+            child: Container(
+              width: 600,
+              margin: const EdgeInsets.only(top: 10),
+              child: ListView.builder(
+                itemCount: snapshot.data!.data.length,
+                itemBuilder: (context, index) {
+                  DocumentModel document = snapshot.data!.data[index];
+                  return InkWell(
+                    onTap:() {
+                      
+                    },
+                    child: SizedBox(
+                      height: 50,
+                      child: Card(
+                        child: Center(
+                          child: Text(
+                            document.title,
+                            style: const TextStyle(fontSize: 17),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          );
+        },
       ),
     );
   }
