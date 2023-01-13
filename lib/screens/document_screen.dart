@@ -46,34 +46,37 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
             ),
           ),
         ],
-        title: Row(
-          children: [
-            Image.asset(
-              'assets/images/docs-logo.png',
-              height: 40,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            SizedBox(
-              width: 150,
-              child: TextField(
-                controller: titleContoller,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: kBLueColor,
-                    ),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 10),
-                ),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 9.0),
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/images/docs-logo.png',
+                height: 40,
               ),
-            )
-          ],
+              const SizedBox(
+                width: 10,
+              ),
+              SizedBox(
+                width: 150,
+                child: TextField(
+                  controller: titleContoller,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: kBLueColor,
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.only(left: 10),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),  
+          preferredSize: const Size.fromHeight(1),
           child: Container(
               decoration: BoxDecoration(
             border: Border.all(
