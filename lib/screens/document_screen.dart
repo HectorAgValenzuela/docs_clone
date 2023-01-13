@@ -107,9 +107,12 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
                 child: Card(
                   color: kWhiteColor,
                   elevation: 5,
-                  child: quill.QuillEditor.basic(
-                    controller: _controller,
-                    readOnly: false,
+                  child: Padding(
+                    padding: const EdgeInsets.all(50.0),
+                    child: quill.QuillEditor.basic(
+                      controller: _controller,
+                      readOnly: false,
+                    ),
                   ),
                 ),
               ),
