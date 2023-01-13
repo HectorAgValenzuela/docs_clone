@@ -61,11 +61,26 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
                 controller: titleContoller,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: kBLueColor,
+                    ),
+                  ),
                   contentPadding: EdgeInsets.only(left: 10),
                 ),
               ),
             )
           ],
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),  
+          child: Container(
+              decoration: BoxDecoration(
+            border: Border.all(
+              color: kGrayColor,
+              width: 0.1,
+            ),
+          )),
         ),
       ),
       body: Center(
