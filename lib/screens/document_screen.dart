@@ -1,5 +1,6 @@
 import 'package:docs_clone_flutter/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DocumentScreen extends ConsumerStatefulWidget {
@@ -18,6 +19,8 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
   TextEditingController titleContoller =
       TextEditingController(text: 'Untitled');
 
+  final quill.QuillController _controller = quill.QuillController.basic();
+
   @override
   void dispose() {
     super.dispose();
@@ -27,6 +30,7 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Begin of AppBar section
       appBar: AppBar(
         backgroundColor: kWhiteColor,
         elevation: 0,
@@ -86,8 +90,17 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
           )),
         ),
       ),
-      body: Center(
-        child: Text(widget.id),
+      // End of AppBar section
+      body: Column(
+        children: [
+          quill.QuillToolbar.basic(controller: _controller),
+          Expanded(
+            child: quill.QuillEditor.basic(
+              controller: _controller,
+              readOnly: false, 
+            ),
+          )
+        ],
       ),
     );
   }
