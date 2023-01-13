@@ -91,16 +91,31 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
         ),
       ),
       // End of AppBar section
-      body: Column(
-        children: [
-          quill.QuillToolbar.basic(controller: _controller),
-          Expanded(
-            child: quill.QuillEditor.basic(
-              controller: _controller,
-              readOnly: false, 
+      body: Center(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 10,
             ),
-          )
-        ],
+            quill.QuillToolbar.basic(controller: _controller),
+            const SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: SizedBox(
+                width: 750,
+                child: Card(
+                  color: kWhiteColor,
+                  elevation: 5,
+                  child: quill.QuillEditor.basic(
+                    controller: _controller,
+                    readOnly: false,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
